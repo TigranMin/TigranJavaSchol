@@ -23,12 +23,12 @@ public class Person {
     }
 
     public boolean marry (Person person) {
-        if(this.man != person.man && this.spouse != person){
-            if(this.spouse != null) this.divorce();
-            if(person.spouse != null) person.divorce();
+        if(this.man != person.man && this.spouse != person){ //method checks gender of persons and if they are not husband and wife
+            if(this.spouse != null) this.divorce();    // If one of them has another spouse - execute divorce
+            if(person.spouse != null) person.divorce();   // If one of them has another spouse - execute divorce
 
-            person.setSpouse(this);
-            this.setSpouse(person);
+            person.setSpouse(this);  // tries to marry
+            this.setSpouse(person);  // tries to marry
             return true;
         }
         else
@@ -40,7 +40,7 @@ public class Person {
         Person ann = new Person(false, "Ann");
         andrew.marry(ann);
         //andrew.divorce();
-        System.out.println(ann.spouse.name);
+        System.out.println(ann.spouse.name); // Ann's spouse is Andrew
 
     }
 
