@@ -5,6 +5,11 @@ public class Person {
     private final String name;
     private Person spouse;
 
+    @Override
+    public String toString() {
+        return "Person{" + "man= " + man + ", name= '" + name + '\'' + ", spouse= '" + spouse.name + '\'' + '}';
+    }
+
     public Person(boolean man, String name) {
         this.man = man;
         this.name = name;
@@ -31,8 +36,9 @@ public class Person {
                 person.divorce();                          // If one of them has another spouse - execute divorce
             }
 
-            person.setSpouse(this);  // marry
             this.setSpouse(person);  // marry
+            person.setSpouse(this);  // marry
+
             return true;
         }
         else
@@ -44,7 +50,8 @@ public class Person {
         Person ann = new Person(false, "Ann");
         andrew.marry(ann);
         //andrew.divorce();
-        System.out.println(ann.spouse.name); // Ann's spouse is Andrew
+        System.out.println(ann.toString());// Ann's spouse is Andrew
+        System.out.println(andrew.toString());
     }
 
 }
