@@ -50,8 +50,8 @@ public class Person {
         Person ann = new Person(false, "Ann");
         andrew.marry(ann);
         //andrew.divorce();
-        System.out.println(ann.toString());// Ann's spouse is Andrew
-        System.out.println(andrew.toString());
+        System.out.println(ann);// Ann's spouse is Andrew
+        System.out.println(andrew);
     }
 
 }
