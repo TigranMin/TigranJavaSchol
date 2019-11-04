@@ -16,7 +16,7 @@ public class Person {
 
     public boolean divorce() {
         if(this.spouse != null){
-            spouse.spouse = null;
+            spouse.spouse = null;   //divorce
             this.spouse = null;
         }
         return true;
