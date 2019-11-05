@@ -35,7 +35,7 @@ class PersonTest {
     }
 
     @org.junit.jupiter.api.Test
-    void marry_After_Marriage() {
+    void marryAfterMarriage() {
         Person person1 = new Person(true, "Barack");
         Person person2 = new Person(false, "Michelle");
         Person person3 = new Person(true, "Donald");
@@ -51,7 +51,7 @@ class PersonTest {
     }
 
     @org.junit.jupiter.api.Test
-    void gay_Marriage_Is_Illegal() {
+    void gayMarriageIsIllegal() {
         Person person1 = new Person(true, "Barack");
         Person person2 = new Person(false, "Michelle");
         Person person3 = new Person(true, "Donald");
