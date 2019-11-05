@@ -17,6 +17,7 @@ class PersonTest {
         person2.divorce();
 
         assertNull(person1.getSpouse());
+        assertNull(person2.getSpouse());
     }
 
     @org.junit.jupiter.api.Test
