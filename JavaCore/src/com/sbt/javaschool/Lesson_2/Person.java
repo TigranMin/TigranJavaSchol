@@ -7,7 +7,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "man= " + man + ", name= '" + name + '\'' + ", spouse= '" + spouse.name + '\'' + '}';
+        if(this.spouse == null){
+            return "Person{" + "man= " + man + ", name= '" + name + '\'' + '}';
+        }
+        else
+            return "Person{" + "man= " + man + ", name= '" + name + '\'' + ", spouse= '" + spouse.name + '\'' + '}';
     }
 
     public Person(boolean man, String name) {
@@ -17,6 +21,10 @@ public class Person {
 
     public void setSpouse(Person spouse) {
         this.spouse = spouse;
+    }
+
+    public Person getSpouse() {
+        return spouse;
     }
 
     public boolean divorce() {
