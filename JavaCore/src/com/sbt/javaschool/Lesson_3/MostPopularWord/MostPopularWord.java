@@ -10,8 +10,11 @@ import java.util.TreeSet;
 
 public class MostPopularWord {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("D:/Java/input.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Java/output.txt"));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader output = new BufferedReader(new InputStreamReader(System.in));
+
+        BufferedReader reader = new BufferedReader(new FileReader(input.readLine()));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(output.readLine()));
 
         ArrayList<String> list = new ArrayList<String>();
         String s;
