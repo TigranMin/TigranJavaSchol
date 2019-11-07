@@ -1,4 +1,4 @@
-package com.sbt.javaschool.Lesson_3.MostPopularWord;
+package com.sbt.javaschool.Lesson_3.MostPopularWord_2056;
 
 import java.io.*;
 import java.util.ArrayList;
