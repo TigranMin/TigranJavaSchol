@@ -1,51 +1,37 @@
 package com.sbt.javaschool.Lesson_3.MostPopularWord_2056;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.TreeSet;
-
-//D:/Java/input.txt
-//D:/Java/output.txt
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class MostPopularWord {
     public static void main(String[] args) throws IOException {
-
-        BufferedReader reader = new BufferedReader(new FileReader("D:/Java/input.txt"));
-        //BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Java/output.txt"));
-
-        ArrayList<String> list = new ArrayList<String>();
-        String s;
-
-        while (true){
-            s = reader.readLine();
-            if(s == null){
-                    break;
-            }
-            for (String word: s.split("\\s+")) {
-                list.add(word.toLowerCase());
+        long start = System.currentTimeMillis();
+        File input = new File("D:/Java/input.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(input));
+        String line;
+        HashMap<String, Integer> uniqueWords = new HashMap<>();
+        while ((line = reader.readLine()) != null){
+            for (String word: line.split("\\s+")) {
+                if(uniqueWords.get(word) == null){
+                    uniqueWords.put(word, 1);
+                } else {
+                    uniqueWords.put(word, uniqueWords.get(word) + 1);
+                }
             }
         }
-        int maxFreq = 0;
-        for (String word: list) {
-            if(Collections.frequency(list, word) > maxFreq){
-                maxFreq = Collections.frequency(list, word);
+        int maxFreq = Collections.max(uniqueWords.values());
+        ArrayList<String> list = new ArrayList<>();
+        for (Map.Entry<String, Integer> pair: uniqueWords.entrySet()) {
+            if(pair.getValue() == maxFreq){
+                list.add(pair.getKey());
             }
         }
-
-        TreeSet<String> set = new TreeSet<>();
-
-        for (String word: list) {
-            if(Collections.frequency(list, word) == maxFreq){
-                set.add(word);
-            }
+        list.sort(Comparator.naturalOrder());
+        for (String s: list) {
+            System.out.println(s);
         }
-        for (String mostpopwords : set) {
-//               writer.write(mostpopwords);
-//               writer.newLine();
-            System.out.println(mostpopwords);
-        }
-        reader.close();
-        //writer.close();
     }
 }
