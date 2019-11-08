@@ -11,10 +11,10 @@ import java.util.function.Consumer;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-//        System.out.println(numberOfUniqueWords("D:/Java/input.txt"));
-//        sortedUniqueWords("D:/Java/input.txt");
-//        wordCounter("D:/Java/input.txt");
-//        reversedOrderText("D:/Java/input.txt");
+        System.out.println(numberOfUniqueWords("D:/Java/input.txt"));
+        sortedUniqueWords("D:/Java/input.txt");
+        wordCounter("D:/Java/input.txt");
+        reversedOrderText("D:/Java/input.txt");
         getLineByNumber("D:/Java/input.txt", 7);
 
     }
@@ -51,12 +51,8 @@ public class Solution {
     }
 
     public static void wordCounter (String pathname) throws IOException {
-        ArrayList<String> list = new ArrayList<>(textToMap(pathname).keySet());
-        Comparator<String> comparator = Comparator.comparing(String -> String.length());
-        comparator = comparator.thenComparing(String -> String.toLowerCase());
-        list.sort(comparator);
-        for (String s: list) {
-            System.out.println(s + " - " + textToMap(pathname).get(s));
+        for (Map.Entry<String, Integer> pair: textToMap(pathname).entrySet()) {
+            System.out.println(pair.getKey() + " - " + pair.getValue());
         }
     }
 
