@@ -11,10 +11,11 @@ import java.util.function.Consumer;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        System.out.println(numberOfUniqueWords("D:/Java/input.txt"));
-        sortedUniqueWords("D:/Java/input.txt");
-        wordCounter("D:/Java/input.txt");
-        reversedOrderLines("D:/Java/input.txt");
+//        System.out.println(numberOfUniqueWords("D:/Java/input.txt"));
+//        sortedUniqueWords("D:/Java/input.txt");
+//        wordCounter("D:/Java/input.txt");
+//        reversedOrderText("D:/Java/input.txt");
+        getLineByNumber("D:/Java/input.txt", 7);
 
     }
 
@@ -59,8 +60,7 @@ public class Solution {
         }
     }
 
-
-    public static void reversedOrderLines (String pathname) throws IOException {
+    public static void reversedOrderText (String pathname) throws IOException {
         File input = new File(pathname);
         BufferedReader reader = new BufferedReader(new FileReader(input));
         String line;
@@ -73,6 +73,15 @@ public class Solution {
         }
     }
 
-
+    public static void getLineByNumber (String pathname, int lineNumber) throws IOException {
+        File input = new File(pathname);
+        BufferedReader reader = new BufferedReader(new FileReader(input));
+        String line;
+        ArrayList<String> list = new ArrayList<>();
+        while ((line = reader.readLine()) != null){
+            list.add(line);
+        }
+        System.out.println(list.get(lineNumber - 1));
+    }
 
 }
