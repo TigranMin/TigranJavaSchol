@@ -1,4 +1,4 @@
-package com.sbt.javaschool.Lesson_2;
+package com.sbt.javaschool.lesson2;
 
 public class Person {
     private final boolean man;

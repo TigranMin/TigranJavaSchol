@@ -1,4 +1,4 @@
-package com.sbt.javaschool.Lesson_1;
+package com.sbt.javaschool.lesson1;
 
 public class MyFirstClass {
     public static void main(String[] args) {

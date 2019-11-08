@@ -1,4 +1,4 @@
-package com.sbt.javaschool.Lesson_3.MostPopularWord_2056;
+package com.sbt.javaschool.lesson3.task2056;
 
 import java.io.BufferedReader;
 import java.io.File;

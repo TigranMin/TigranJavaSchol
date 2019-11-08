@@ -1,8 +1,4 @@
-package com.sbt.javaschool.Lesson_2;
-
-import org.junit.After;
-import org.junit.Ignore;
-import org.junit.Test;
+package com.sbt.javaschool.lesson2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
