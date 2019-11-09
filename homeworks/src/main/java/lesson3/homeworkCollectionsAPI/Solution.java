@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-//"D:/Java/input.txt"
-
 public class Solution {
     public static void main(String[] args) throws IOException {
         System.out.println(numberOfUniqueWords("D:/Java/input.txt"));
@@ -19,7 +17,7 @@ public class Solution {
     }
 
     public static Map<String, Integer> textToMap(String pathname) throws IOException {
-        File input = new File("D:/Java/input.txt");
+        File input = new File(pathname);
         Map<String, Integer> uniqueWords = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
             String line;
@@ -38,7 +36,7 @@ public class Solution {
 
     public static void sortedUniqueWords(String pathname) throws IOException {
         List<String> list = new ArrayList<>(textToMap(pathname).keySet());
-        Comparator<String> comparator = Comparator.comparing(string -> string.length());
+        Comparator<String> comparator = Comparator.comparing(String::length);
         comparator = comparator.thenComparing(string -> string.toLowerCase());
         list.sort(comparator);
         for (String s : list) {
@@ -68,13 +66,15 @@ public class Solution {
 
     public static void getLineByNumber(String pathname, int lineNumber) throws IOException {
         File input = new File(pathname);
-        BufferedReader reader = new BufferedReader(new FileReader(input));
-        String line;
-        List<String> list = new ArrayList<>();
-        while ((line = reader.readLine()) != null) {
-            list.add(line);
+        List<String> list;
+        try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
+            String line;
+            list = new ArrayList<>();
+            while ((line = reader.readLine()) != null) {
+                list.add(line);
+            }
+            System.out.println(list.get(lineNumber - 1));
         }
-        System.out.println(list.get(lineNumber - 1));
     }
 
 }
