@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Consumer;
 
 //"D:/Java/input.txt"
 
@@ -19,17 +18,14 @@ public class Solution {
 
     }
 
-    public static HashMap<String, Integer> textToMap(String pathname) throws IOException {
-        File input = new File(pathname);
-        BufferedReader reader = new BufferedReader(new FileReader(input));
-        String line;
-        HashMap<String, Integer> uniqueWords = new HashMap<>();
-        while ((line = reader.readLine()) != null){
-            for (String word: line.split("\\s+")) {
-                if(uniqueWords.get(word) == null){
-                    uniqueWords.put(word, 1);
-                } else {
-                    uniqueWords.put(word, uniqueWords.get(word) + 1);
+    public static Map<String, Integer> textToMap(String pathname) throws IOException {
+        File input = new File("D:/Java/input.txt");
+        Map<String, Integer> uniqueWords = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                for (String word : line.split("\\s+")) {
+                    uniqueWords.merge(word, 1, Integer::sum);
                 }
             }
         }
@@ -41,9 +37,9 @@ public class Solution {
     }
 
     public static void sortedUniqueWords (String pathname) throws IOException {
-        ArrayList<String> list = new ArrayList<>(textToMap(pathname).keySet());
-        Comparator<String> comparator = Comparator.comparing(String -> String.length());
-        comparator = comparator.thenComparing(String -> String.toLowerCase());
+        List<String> list = new ArrayList<>(textToMap(pathname).keySet());
+        Comparator<String> comparator = Comparator.comparing(string -> string.length());
+        comparator = comparator.thenComparing(string -> string.toLowerCase());
         list.sort(comparator);
         for (String s: list) {
             System.out.println(s);
@@ -60,7 +56,7 @@ public class Solution {
         File input = new File(pathname);
         BufferedReader reader = new BufferedReader(new FileReader(input));
         String line;
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         while ((line = reader.readLine()) != null){
             list.add(0, line);
         }
@@ -73,7 +69,7 @@ public class Solution {
         File input = new File(pathname);
         BufferedReader reader = new BufferedReader(new FileReader(input));
         String line;
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         while ((line = reader.readLine()) != null){
             list.add(line);
         }

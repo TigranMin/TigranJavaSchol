@@ -8,17 +8,14 @@ import java.util.*;
 
 public class MostPopularWord {
     public static void main(String[] args) throws IOException {
-//        long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         File input = new File("D:/Java/input.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(input));
-        String line;
-        HashMap<String, Integer> uniqueWords = new HashMap<>();
-        while ((line = reader.readLine()) != null){
-            for (String word: line.split("\\s+")) {
-                if(uniqueWords.get(word) == null){
-                    uniqueWords.put(word, 1);
-                } else {
-                    uniqueWords.put(word, uniqueWords.get(word) + 1);
+        Map<String, Integer> uniqueWords = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                for (String word : line.split("\\s+")) {
+                    uniqueWords.merge(word, 1, Integer::sum);
                 }
             }
         }
@@ -33,7 +30,7 @@ public class MostPopularWord {
         for (String s: list) {
             System.out.println(s);
         }
-//        long end = System.currentTimeMillis();
-//        System.out.println(end - start);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 }
