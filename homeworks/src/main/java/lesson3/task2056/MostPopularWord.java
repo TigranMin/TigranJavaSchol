@@ -1,24 +1,14 @@
 package lesson3.task2056;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import lesson3.homeworkCollectionsAPI.Solution;
+
 import java.io.IOException;
 import java.util.*;
 
 public class MostPopularWord {
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
-        File input = new File("D:/Java/input.txt");
-        Map<String, Integer> uniqueWords = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                for (String word : line.split("\\s+")) {
-                    uniqueWords.merge(word, 1, Integer::sum);
-                }
-            }
-        }
+        Map<String, Integer> uniqueWords = Solution.textToMap("D:/Java/input.txt");
         int maxFreq = Collections.max(uniqueWords.values());
         ArrayList<String> list = new ArrayList<>();
         for (Map.Entry<String, Integer> pair: uniqueWords.entrySet()) {
