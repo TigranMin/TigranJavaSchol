@@ -13,10 +13,6 @@ public class CountMapIml<T> implements CountMap<T> {
         mapCounter.putIfAbsent(o, 1);
     }
 
-    private void add(Object key, Object val) {
-        mapCounter.merge((T) key, (Integer) val, Integer::sum);
-    }
-
     @Override
     public int getCount(T o) {
         return mapCounter.getOrDefault(o, 0);
@@ -36,11 +32,11 @@ public class CountMapIml<T> implements CountMap<T> {
 
     @Override
     public void addAll(CountMap<T> source) {
-        source.toMap().forEach(this::add);
+        source.toMap().forEach((key, val) -> mapCounter.merge(key, val, Integer::sum));
     }
 
     @Override
-    public Map toMap() {
+    public Map<T, Integer> toMap() {
         return mapCounter;
     }
 
