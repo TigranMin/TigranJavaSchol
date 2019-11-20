@@ -5,9 +5,11 @@ import java.lang.reflect.Proxy;
 public class Main {
     public static void main(String[] args) {
 
-        Class[] interfaces = CalculatorImpl.class.getInterfaces();
-        ClassLoader classLoader = CalculatorImpl.class.getClassLoader();
-        CachedProxy cachedProxy = new CachedProxy(new CalculatorImpl());
+        CalculatorImpl calculator = new CalculatorImpl();
+
+        Class[] interfaces = calculator.getClass().getInterfaces();
+        ClassLoader classLoader = calculator.getClass().getClassLoader();
+        CachedProxy cachedProxy = new CachedProxy(calculator);
 
         Calculator cached = (Calculator) Proxy.newProxyInstance(classLoader, interfaces, cachedProxy);
         System.out.println(cached.calc(10));
