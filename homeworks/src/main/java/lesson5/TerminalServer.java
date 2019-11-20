@@ -8,14 +8,14 @@ import java.util.Objects;
 
 class TerminalServer {
 
-    private static Map<Long, Account> accaunts = new HashMap<>();
+    private static Map<Long, Account> accounts = new HashMap<>();
 
-    static Map<Long, Account> getAccaunts() {
-        return accaunts;
+    static Map<Long, Account> getAccounts() {
+        return accounts;
     }
 
     boolean pinChecker(Long accountNumber, Integer pin) throws AccountIsLockedException {
-        Account account = accaunts.get(accountNumber);
+        Account account = accounts.get(accountNumber);
         Objects.requireNonNull(account);
 
         if(!(account.getPin().equals(pin))){

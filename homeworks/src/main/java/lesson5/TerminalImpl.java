@@ -12,10 +12,10 @@ public class TerminalImpl implements Terminal{
     @Override
     public void withdrawMoney(Long accountNumber, Integer pin, double amount) throws AccountIsLockedException, IncorrectPinException {
         if (terminalServer.pinChecker(accountNumber, pin)){
-            TerminalServer.getAccaunts().get(accountNumber).setAccountBalance(TerminalServer.getAccaunts().get(accountNumber).getAccountBalance() - amount);
+            TerminalServer.getAccounts().get(accountNumber).setAccountBalance(TerminalServer.getAccounts().get(accountNumber).getAccountBalance() - amount);
             balanceOnScreen(accountNumber, pin);
         } else{
-            TerminalServer.getAccaunts().get(accountNumber).incrementCountOfWrongPins();
+            TerminalServer.getAccounts().get(accountNumber).incrementCountOfWrongPins();
             throw new IncorrectPinException();
         }
     }
@@ -23,10 +23,10 @@ public class TerminalImpl implements Terminal{
     @Override
     public void putMoney(Long accountNumber, Integer pin, double amount) throws AccountIsLockedException, IncorrectPinException {
         if (terminalServer.pinChecker(accountNumber, pin)){
-            TerminalServer.getAccaunts().get(accountNumber).setAccountBalance(TerminalServer.getAccaunts().get(accountNumber).getAccountBalance() + amount);
+            TerminalServer.getAccounts().get(accountNumber).setAccountBalance(TerminalServer.getAccounts().get(accountNumber).getAccountBalance() + amount);
             balanceOnScreen(accountNumber, pin);
         } else{
-            TerminalServer.getAccaunts().get(accountNumber).incrementCountOfWrongPins();
+            TerminalServer.getAccounts().get(accountNumber).incrementCountOfWrongPins();
             throw new IncorrectPinException();
         }
     }
@@ -34,9 +34,9 @@ public class TerminalImpl implements Terminal{
     @Override
     public double balanceEnquiry(Long accountNumber, Integer pin) throws AccountIsLockedException, IncorrectPinException {
         if (terminalServer.pinChecker(accountNumber, pin)){
-            return TerminalServer.getAccaunts().get(accountNumber).getAccountBalance();
+            return TerminalServer.getAccounts().get(accountNumber).getAccountBalance();
         } else{
-            TerminalServer.getAccaunts().get(accountNumber).incrementCountOfWrongPins();
+            TerminalServer.getAccounts().get(accountNumber).incrementCountOfWrongPins();
             throw new IncorrectPinException();
         }
     }
@@ -44,9 +44,9 @@ public class TerminalImpl implements Terminal{
     @Override
     public void balanceOnScreen(Long accountNumber, Integer pin) throws IncorrectPinException, AccountIsLockedException {
         if (terminalServer.pinChecker(accountNumber, pin)){
-            System.out.println(TerminalServer.getAccaunts().get(accountNumber).getAccountBalance());
+            System.out.println(TerminalServer.getAccounts().get(accountNumber).getAccountBalance());
         } else{
-            TerminalServer.getAccaunts().get(accountNumber).incrementCountOfWrongPins();
+            TerminalServer.getAccounts().get(accountNumber).incrementCountOfWrongPins();
             throw new IncorrectPinException();
         }
     }
