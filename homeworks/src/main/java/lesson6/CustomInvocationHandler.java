@@ -14,7 +14,6 @@ public class CustomInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        Objects.requireNonNull(CalculatorImpl.getCache().keySet());
         if (method.getName().equals("calc") && CalculatorImpl.getCache().containsKey(args[0])){
             return CalculatorImpl.getCache().get(args[0]);
         }
