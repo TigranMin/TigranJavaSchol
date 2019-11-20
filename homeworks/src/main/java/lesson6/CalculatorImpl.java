@@ -1,9 +1,5 @@
 package lesson6;
 
-import java.lang.reflect.Proxy;
-import java.util.HashMap;
-import java.util.Map;
-
 public class CalculatorImpl implements Calculator {
 
     public Integer calc(Integer x) {
