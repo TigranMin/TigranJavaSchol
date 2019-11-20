@@ -13,8 +13,10 @@ public class Main {
 
         Calculator cached = (Calculator) Proxy.newProxyInstance(classLoader, interfaces, cachedProxy);
         System.out.println(cached.calc(10));
-        System.out.println(cached.calc(11));
+        System.out.println(cached.calc(999));
         System.out.println(cached.calc(10));
+        System.out.println(cached.calc(999));
+
 
     }
 }

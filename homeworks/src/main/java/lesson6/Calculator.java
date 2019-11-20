@@ -1,5 +1,7 @@
 package lesson6;
 
+import java.math.BigInteger;
+
 public interface Calculator {
-    Integer calc(Integer x);
+    BigInteger calc(Integer x);
 }
