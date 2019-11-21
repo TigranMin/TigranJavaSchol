@@ -9,7 +9,7 @@ public class CalculatorImpl implements Calculator {
         for (int i = 1; i < x + 1; i++) {
             result = result.multiply(BigInteger.valueOf(i)) ;
         }
-        System.out.print("Calculated by calc method: ");
+        System.out.print("Calculated by calc: ");
         return result;
     }
 }

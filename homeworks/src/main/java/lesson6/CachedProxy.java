@@ -18,7 +18,7 @@ public class CachedProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        String key = method.getName() + Arrays.toString(args);
+        String key = object.getClass().getName() + method.getName() + Arrays.toString(args);
         if (cache.containsKey(key)) {
             System.out.print("Returned from cache: ");
             return cache.get(key);
