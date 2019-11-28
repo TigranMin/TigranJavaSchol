@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Cache {
 
-        CacheType cacheType();
+        CacheType cacheType() default CacheType.IN_MEMORY;
         String fileName();
         boolean zip() default false;
         int listList() default 100000;
