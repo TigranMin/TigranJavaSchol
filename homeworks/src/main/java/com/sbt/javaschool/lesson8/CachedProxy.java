@@ -3,7 +3,6 @@ package com.sbt.javaschool.lesson8;
 import com.sbt.javaschool.lesson8.annotations.Cache;
 import com.sbt.javaschool.lesson8.annotations.CacheType;
 
-import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -47,11 +46,7 @@ public class CachedProxy implements InvocationHandler {
                     return result;
                 } else {
                     result = method.invoke(object, args);
-                    if (result instanceof List) {
-                        ser.serialize(cacheAnno.fileName(), ((List) result).subList(0, cacheAnno.listList()));
-                    } else {
-                        ser.serialize(cacheAnno.fileName(), result);
-                    }
+                    ser.serialize(cacheAnno.fileName(), result, cacheAnno.listList());
                     return result;
                 }
             }
