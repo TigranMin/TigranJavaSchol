@@ -1,7 +1,7 @@
 public interface Account {
 
-    void friend (Account account);
+    void friend (Account newFriend);
 
-    void unFriend (Account account);
+    void unFriend (Account friend);
 
 }

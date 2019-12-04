@@ -2,8 +2,8 @@ public interface Post {
 
     Post textPost (String text);
 
-    Post imgPost ();
+    Post imgPost (String imgLink);
 
-    Post mixedPost();
+    Post videoPost(String videoLink);
 
 }
