@@ -11,6 +11,16 @@ public class AccountImpl implements Account {
     private URL avatar;
     private List<Account> friends;
 
+    public List<Account> getFriends() {
+        return friends;
+    }
+
+    public List<Community> getCommunities() {
+        return communities;
+    }
+
+    private List<Community> communities;
+
     public AccountImpl(Integer id, String name, String surname, String nicName, URL avatar) {
         this.id = id;
         this.name = name;
@@ -67,6 +77,16 @@ public class AccountImpl implements Account {
     @Override
     public void unFriend(Account friend) {
         friends.remove(friend);
+    }
+
+    @Override
+    public void joinCommunity(Community community) {
+        communities.add(community);
+    }
+
+    @Override
+    public void leaveCommunity(Community community) {
+        communities.remove(community);
     }
 }
 
