@@ -1,3 +1,5 @@
+import javax.print.DocFlavor;
+import java.net.URL;
 import java.util.List;
 
 public class AccountImpl implements Account {
@@ -6,10 +8,10 @@ public class AccountImpl implements Account {
     private String name;
     private String surname;
     private String nicName;
-    private String avatar;
+    private URL avatar;
     private List<Account> friends;
 
-    public AccountImpl(Integer id, String name, String surname, String nicName, String avatar) {
+    public AccountImpl(Integer id, String name, String surname, String nicName, URL avatar) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -49,11 +51,11 @@ public class AccountImpl implements Account {
         this.nicName = nicName;
     }
 
-    public String getAvatar() {
+    public URL getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(URL avatar) {
         this.avatar = avatar;
     }
 
