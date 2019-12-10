@@ -15,11 +15,6 @@ public class AccountImpl implements Account {
         return friends;
     }
 
-    public List<Community> getCommunities() {
-        return communities;
-    }
-
-    private List<Community> communities;
 
     public AccountImpl(Integer id, String name, String surname, String nicName, URL avatar) {
         this.id = id;
@@ -79,15 +74,5 @@ public class AccountImpl implements Account {
         friends.remove(friend);
     }
 
-    @Override
-    public void joinCommunity(Community community) {
-        communities.add(community);
-    }
-
-    @Override
-    public void leaveCommunity(Community community) {
-        communities.remove(community);
-    }
 }
-
 

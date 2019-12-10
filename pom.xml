@@ -21,7 +21,7 @@
         </plugins>
     </build>
     <modules>
-        <module>SocialNetworkDesignLesson10</module>
+        <module>social-network-design-lesson10</module>
     </modules>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>

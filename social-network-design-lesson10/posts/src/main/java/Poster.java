@@ -1,4 +1,4 @@
-public interface Post {
+public interface Poster {
 
     Post textPost (String text);
 
