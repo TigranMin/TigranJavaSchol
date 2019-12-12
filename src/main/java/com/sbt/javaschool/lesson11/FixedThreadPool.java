@@ -1,4 +1,4 @@
-package com.sbt.javaschool.lesson11.part2;
+package com.sbt.javaschool.lesson11;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -11,7 +11,7 @@ public class FixedThreadPool implements ThreadPool {
 
     public FixedThreadPool(int threadCount) {
         for (int i = 0; i < threadCount; i++) {
-            new Thread(new Tasks(), "#" + i).start();
+            new Thread(new Task(), "#" + i).start();
         }
     }
 
@@ -31,7 +31,7 @@ public class FixedThreadPool implements ThreadPool {
         }
     }
 
-    private final class Tasks implements Runnable {
+    private final class Task implements Runnable {
 
         @Override
         public void run() {
