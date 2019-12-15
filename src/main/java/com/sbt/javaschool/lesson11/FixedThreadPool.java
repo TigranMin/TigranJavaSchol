@@ -4,19 +4,13 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class FixedThreadPool implements ThreadPool {
-
     private final Queue<Runnable> taskQueue = new ConcurrentLinkedQueue<>();
-    private volatile boolean isClosed = false;
+    private volatile boolean isRunning = true;
 
-
-    public FixedThreadPool(int threadCount) {
-        for (int i = 0; i < threadCount; i++) {
+    public FixedThreadPool(int threadsCount) {
+        for (int i = 0; i < threadsCount; i++) {
             new Thread(new Task(), "#" + i).start();
         }
-    }
-
-    public void close(){
-        isClosed = true;
     }
 
     @Override
@@ -26,16 +20,20 @@ public class FixedThreadPool implements ThreadPool {
 
     @Override
     public void execute(Runnable runnable) {
-        if (!isClosed) {
+        if (isRunning) {
             taskQueue.offer(runnable);
         }
+    }
+
+    public void shutdown() {
+        isRunning = false;
     }
 
     private final class Task implements Runnable {
 
         @Override
         public void run() {
-            while (!isClosed) {
+            while (isRunning) {
                 Runnable nextTask = taskQueue.poll();
                 if (nextTask != null) {
                     nextTask.run();
@@ -43,5 +41,4 @@ public class FixedThreadPool implements ThreadPool {
             }
         }
     }
-
 }
