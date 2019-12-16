@@ -39,9 +39,7 @@ public class FixedThreadPool implements ThreadPool {
 
         @Override
         public void run() {
-            if (threadList.size() > taskQueue.size()){
-                shutdown();
-            }
+
             while (isRunning) {
                 Runnable nextTask = taskQueue.poll();
                 if (nextTask != null) {
