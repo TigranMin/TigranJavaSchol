@@ -8,7 +8,8 @@ import java.util.*;
 public class MostPopularWord {
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
-        Map<String, Integer> uniqueWords = Solution.textToMap("C:\\Users\\tigra\\IdeaProjects\\TigranJavaSchool2\\src\\main\\java\\com\\sbt\\javaschool\\resources");
+        Map<String, Integer> uniqueWords = Solution.textToMap(
+                "C:\\Users\\tigra\\IdeaProjects\\TigranJavaSchool2\\src\\main\\java\\com\\sbt\\javaschool\\resources");
         int maxFreq = Collections.max(uniqueWords.values());
         ArrayList<String> list = new ArrayList<>();
         for (Map.Entry<String, Integer> pair: uniqueWords.entrySet()) {
