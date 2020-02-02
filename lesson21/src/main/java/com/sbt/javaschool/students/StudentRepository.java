@@ -16,7 +16,7 @@ public class StudentRepository {
     public static final String SELECT_BY_ID =
             "select * from STUDENTS where STUDENT_ID = :studentId";
     public static final String INSERT =
-            "insert into STUDENTS (NAME, LASTNAME) values ( :name, :lastName )";
+            "insert into STUDENTS (NAME, LAST_NAME) values ( :name, :lastName )";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final StudentRowMapper studentRowMapper;
