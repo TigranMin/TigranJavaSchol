@@ -2,19 +2,19 @@ package com.sbt.javaschool.students;
 
 public class Student {
 
-    private final Long id;
+    private final Long studentId;
 
     private final String name;
     private final String lastName;
 
-    public Student(Long id, String name, String lastName) {
-        this.id = id;
+    public Student(Long studentId, String name, String lastName) {
+        this.studentId = studentId;
         this.name = name;
         this.lastName = lastName;
     }
 
-    public Long getId() {
-        return id;
+    public Long getStudentId() {
+        return studentId;
     }
 
     public String getName() {

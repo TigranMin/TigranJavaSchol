@@ -13,11 +13,15 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> loadByLessonId(long lessonId) throws SQLException {
+    public List<Student> loadByLessonId(long lessonId) {
         return studentRepository.loadByLessonId(lessonId);
     }
 
-    public Student loadById(long id) throws SQLException {
+    public Student loadById(long id)  {
         return studentRepository.loadById(id);
+    }
+
+    public void create(Student student) {
+        studentRepository.create(student);
     }
 }

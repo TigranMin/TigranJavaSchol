@@ -9,7 +9,8 @@ import java.sql.SQLException;
 @Repository
 public class LessonsRepository {
 
-    private static final String SELECT_BY_ID = "select LESSONS.* FROM LESSONS " +
+    private static final String SELECT_BY_ID =
+            "select LESSONS.* FROM LESSONS " +
             "where LESSON_ID = :lessonId";
 
 

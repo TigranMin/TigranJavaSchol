@@ -15,6 +15,8 @@ public class StudentRepository {
                     "where LESSON_ID = :lessonId";
     public static final String SELECT_BY_ID =
             "select * from STUDENTS where STUDENT_ID = :studentId";
+    public static final String INSERT =
+            "insert into STUDENTS (NAME, LASTNAME) values ( :name, :lastName )";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final StudentRowMapper studentRowMapper;
@@ -24,15 +26,29 @@ public class StudentRepository {
         this.studentRowMapper = studentRowMapper;
     }
 
-    List<Student> loadByLessonId(long lessonId) throws SQLException {
+    List<Student> loadByLessonId(long lessonId)  {
         return jdbcTemplate.query(SELECT_BY_LESSON_ID,
                 new MapSqlParameterSource("lessonId", lessonId),
                 studentRowMapper);
     }
 
-    Student loadById(long id) throws SQLException {
+    Student loadById(long id) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID,
                 new MapSqlParameterSource("studentId", id),
                 studentRowMapper);
+    }
+
+    void create(Student student){
+        jdbcTemplate.update(
+                INSERT,
+                doMapping(student)
+        );
+    }
+
+    private MapSqlParameterSource doMapping(Student student) {
+        return new MapSqlParameterSource()
+                .addValue("studentId", student.getStudentId())
+                .addValue("name", student.getName())
+                .addValue("lastName", student.getLastName());
     }
 }
