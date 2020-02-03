@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Function;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
@@ -13,7 +14,6 @@ public class Solution {
         wordCounter("D:/Java/input.txt");
         reversedOrderText("D:/Java/input.txt");
         getLineByNumber("D:/Java/input.txt", 7);
-
     }
 
     public static Map<String, Integer> textToMap(String pathname) throws IOException {
@@ -37,7 +37,7 @@ public class Solution {
     public static void sortedUniqueWords(String pathname) throws IOException {
         List<String> list = new ArrayList<>(textToMap(pathname).keySet());
         Comparator<String> comparator = Comparator.comparing(String::length);
-        comparator = comparator.thenComparing(string -> string.toLowerCase());
+        comparator = comparator.thenComparing((Function<String, String>) String::toLowerCase);
         list.sort(comparator);
         for (String s : list) {
             System.out.println(s);
