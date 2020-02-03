@@ -76,5 +76,4 @@ public class Solution {
             System.out.println(list.get(lineNumber - 1));
         }
     }
-
 }
