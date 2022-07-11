@@ -42,7 +42,7 @@
 
     </dependencies>
     <properties>
-        <spring-version>2.2.2.RELEASE</spring-version>
+        <spring-version>2.2.11.RELEASE</spring-version>
     </properties>
 
 </project>
